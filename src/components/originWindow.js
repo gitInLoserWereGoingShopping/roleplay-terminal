@@ -5,8 +5,8 @@ import {
   originStatus,
   originNext,
   originClose
-} from "./dom.js";
-import { state } from "./state.js";
+} from "../dom.js";
+import { state } from "../state.js";
 
 function clearOriginWindow() {
   if (state.originTimer) {

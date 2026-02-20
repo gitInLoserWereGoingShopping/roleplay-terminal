@@ -4,16 +4,24 @@ import { formatClock } from "./utils.js";
 import { handleCommand } from "./commands.js";
 import { enterNode } from "./render.js";
 import { bindOriginWindow, bindGlitchOverlay } from "./components/index.js";
+import { addLine } from "./ui.js";
 
 function tickClock() {
   clockEl.textContent = formatClock();
 }
 
 async function loadStory() {
-  const res = await fetch("data/story.json");
-  state.story = await res.json();
-  await enterNode(state.story.startNode, { silent: true });
-  await enterNode(state.story.startNode);
+  try {
+    addLine("Initializing relay...", "dim");
+    const res = await fetch("data/story.json");
+    if (!res.ok) throw new Error(`Story load failed: ${res.status}`);
+    state.story = await res.json();
+    await enterNode(state.story.startNode, { silent: true });
+    await enterNode(state.story.startNode);
+  } catch (err) {
+    addLine("Failed to load story data.", "warn");
+    addLine(String(err.message || err), "dim");
+  }
 }
 
 commandInput.addEventListener("keydown", (event) => {
