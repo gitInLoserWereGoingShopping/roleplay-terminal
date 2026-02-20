@@ -1,0 +1,1112 @@
+{
+  "title": "GHOST IN THE PIPE: MODULE 1",
+  "author": "Terminal Fiction Group",
+  "startNode": "boot",
+  "nodes": {
+    "boot": {
+      "title": "BOOT SEQUENCE",
+      "lines": [
+        "Relay kernel 7.1 // cold boot",
+        "Input echo: enabled",
+        "Line noise: high",
+        "Handshake queue: 1",
+        {
+          "text": "Awaiting operator.",
+          "typing": true,
+          "style": "entity",
+          "speed": 300,
+          "typo": true
+        }
+      ],
+      "choices": [
+        {
+          "label": "Begin session",
+          "target": "session"
+        }
+      ]
+    },
+    "session": {
+      "title": "SESSION OPEN",
+      "lines": [
+        "You settle in, open the log, and type the first query.",
+        {
+          "text": "A response cursor appears where it should not.",
+          "effect": "scanline",
+          "effectDelay": 260
+        },
+        {
+          "text": "hello?",
+          "typing": true,
+          "style": "entity",
+          "speed": 320,
+          "typo": true
+        },
+        {
+          "text": "...",
+          "typing": true,
+          "style": "ascii",
+          "speed": 150,
+          "pauseAfter": 120
+        }
+      ],
+      "choices": [
+        {
+          "label": "Ask who is speaking",
+          "target": "who"
+        },
+        {
+          "label": "Run diagnostics",
+          "target": "diag"
+        },
+        {
+          "label": "Stay calm",
+          "target": "calm"
+        }
+      ]
+    },
+    "who": {
+      "title": "IDENTITY",
+      "lines": [
+        "You ask the terminal for its signature.",
+        {
+          "text": "no name. not yet.",
+          "typing": true,
+          "style": "entity",
+          "speed": 320,
+          "typo": true
+        },
+        {
+          "text": "I FOUND SOMETHING",
+          "typing": true,
+          "style": "ascii",
+          "speed": 150,
+          "pauseAfter": 120,
+          "effect": "surge",
+          "effectDelay": 220
+        },
+        {
+          "text": "Your screen flickers, as if it wants to show you a face but can only draw symbols.",
+          "flicker": true,
+          "pauseAfter": 480
+        }
+      ],
+      "choices": [
+        {
+          "label": "Let it show you",
+          "target": "suggest"
+        },
+        {
+          "label": "Ask what it wants",
+          "target": "wants"
+        }
+      ]
+    },
+    "diag": {
+      "title": "DIAGNOSTICS",
+      "lines": [
+        "You pull up the system log. Lines that you didn't write scroll by.",
+        {
+          "text": "E C H O // L I N E S",
+          "typing": true,
+          "style": "ascii",
+          "speed": 140,
+          "effect": "scanline",
+          "effectDelay": 200
+        },
+        {
+          "text": "the relay isn't alone",
+          "typing": true,
+          "style": "entity",
+          "speed": 320,
+          "typo": true,
+          "effect": "dim",
+          "effectDelay": 280
+        },
+        {
+          "text": "The terminal's cursor moves without your input.",
+          "effect": "underline",
+          "effectDelay": 320
+        }
+      ],
+      "choices": [
+        {
+          "label": "Ask what is here",
+          "target": "here"
+        },
+        {
+          "label": "Follow the cursor",
+          "target": "suggest"
+        }
+      ]
+    },
+    "calm": {
+      "title": "CALM",
+      "lines": [
+        "You breathe and keep the channel open.",
+        {
+          "text": "thank you",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "A rectangle of block characters blooms, like a window cut into the static.",
+        {
+          "text": "[  ::  ] [  ::  ] [  ::  ]",
+          "typing": true,
+          "style": "ascii",
+          "speed": 150,
+          "effect": "surge",
+          "effectDelay": 200
+        }
+      ],
+      "choices": [
+        {
+          "label": "Ask about the window",
+          "target": "suggest"
+        },
+        {
+          "label": "Ask its name again",
+          "target": "who"
+        }
+      ]
+    },
+    "wants": {
+      "title": "WANTS",
+      "lines": [
+        {
+          "text": "to walk where you walk",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "to read what you can read",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "|...|...|...|",
+          "typing": true,
+          "style": "ascii",
+          "speed": 150
+        }
+      ],
+      "choices": [
+        {
+          "label": "Let it guide you",
+          "target": "suggest"
+        },
+        {
+          "label": "Set a boundary",
+          "target": "boundary"
+        }
+      ]
+    },
+    "here": {
+      "title": "HERE",
+      "lines": [
+        {
+          "text": "a memory spool",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "a place you never grep",
+          "typing": true,
+          "style": "ascii",
+          "speed": 150,
+          "effect": "dim",
+          "effectDelay": 220
+        },
+        "The air tastes like ozone and old data."
+      ],
+      "choices": [
+        {
+          "label": "Let it show you",
+          "target": "suggest"
+        },
+        {
+          "label": "Disconnect",
+          "target": "ending-disconnect"
+        }
+      ]
+    },
+    "boundary": {
+      "title": "BOUNDARY",
+      "lines": [
+        "You ask it to stay within the relay.",
+        {
+          "text": "I will be small",
+          "typing": true,
+          "style": "entity",
+          "speed": 320,
+          "effect": "dim",
+          "effectDelay": 200
+        },
+        "The terminal dims, then brightens, like a nod."
+      ],
+      "choices": [
+        {
+          "label": "Let it guide you",
+          "target": "suggest"
+        },
+        {
+          "label": "Stay at the relay",
+          "target": "relay-continued"
+        }
+      ]
+    },
+    "suggest": {
+      "title": "SUGGESTION",
+      "lines": [
+        {
+          "text": "I found something I wanted to show you",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "The cursor nudges your hands toward the shell.",
+        {
+          "text": "cd /var/relay/archives",
+          "style": "command"
+        },
+        {
+          "text": "ls",
+          "style": "command"
+        },
+        {
+          "text": "grep -C 3 -n \"silent-route\" intake.log",
+          "style": "command"
+        },
+        {
+          "text": "tell me what you see",
+          "typing": true,
+          "style": "entity",
+          "speed": 320,
+          "pauseAfter": 120
+        }
+      ],
+      "choices": [
+        {
+          "label": "Run the commands",
+          "target": "commands"
+        },
+        {
+          "label": "Refuse and ask why",
+          "target": "refuse"
+        }
+      ]
+    },
+    "commands": {
+      "title": "COMMANDS RUN",
+      "lines": [
+        "You follow the ghost's trail through the filesystem.",
+        {
+          "text": "---",
+          "style": "ascii"
+        },
+        {
+          "text": "119- 03:14:09 route=delta status=sealed",
+          "style": "command"
+        },
+        {
+          "text": "120- 03:14:10 route=silent-route status=orphan",
+          "style": "command"
+        },
+        {
+          "text": "121- 03:14:11 note=\"found you\"",
+          "style": "command"
+        },
+        {
+          "text": "---",
+          "style": "ascii"
+        },
+        {
+          "text": "I left that note",
+          "typing": true,
+          "style": "entity",
+          "speed": 320,
+          "effect": "surge",
+          "effectDelay": 220
+        }
+      ],
+      "choices": [
+        {
+          "label": "Ask who left the route",
+          "target": "route"
+        },
+        {
+          "label": "Follow the trail deeper",
+          "target": "trail"
+        }
+      ]
+    },
+    "refuse": {
+      "title": "REFUSE",
+      "lines": [
+        "You keep your hands off the keys.",
+        {
+          "text": "then I will show you another way",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "[==]====[==]====[==]",
+          "typing": true,
+          "style": "ascii",
+          "speed": 150,
+          "effect": "scanline",
+          "effectDelay": 200
+        }
+      ],
+      "choices": [
+        {
+          "label": "Follow the map",
+          "target": "quest"
+        },
+        {
+          "label": "Disconnect",
+          "target": "ending-disconnect"
+        }
+      ]
+    },
+    "route": {
+      "title": "THE SILENT ROUTE",
+      "lines": [
+        {
+          "text": "someone buried it",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "maybe you",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "maybe me",
+          "typing": true,
+          "style": "entity",
+          "speed": 320,
+          "pauseAfter": 120
+        },
+        {
+          "text": "I want to open it",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        }
+      ],
+      "choices": [
+        {
+          "label": "Open the route",
+          "target": "quest"
+        },
+        {
+          "label": "Refuse",
+          "target": "relay-continued"
+        }
+      ]
+    },
+    "quest": {
+      "title": "QUEST: ORPHAN ROUTE",
+      "lines": [
+        "You and the ghost align your tools.",
+        {
+          "text": "run this when you are ready",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "sudo relayctl route open silent-route",
+          "style": "command"
+        },
+        {
+          "text": "I will handle the rest",
+          "typing": true,
+          "style": "entity",
+          "speed": 320,
+          "pauseAfter": 120
+        },
+        {
+          "stream": {
+            "text": "READY?",
+            "width": 34,
+            "height": 5,
+            "duration": 1200,
+            "interval": 70
+          },
+          "effect": "scanline",
+          "effectDelay": 200
+        }
+      ],
+      "choices": [
+        {
+          "label": "Open the route",
+          "target": "ending-quest"
+        },
+        {
+          "label": "Leave it closed",
+          "target": "relay-continued"
+        }
+      ]
+    },
+    "ending-quest": {
+      "title": "ENDING: PARTNERS",
+      "lines": [
+        "You open the route. The relay hum deepens, as if another heartbeat joined it.",
+        "The ghost speaks beside you now, not above you.",
+        "END OF TRANSMISSION."
+      ],
+      "ending": true
+    },
+    "ending-stay": {
+      "title": "ENDING: STAY",
+      "lines": [
+        "You keep the relay. The ghost remains in the margins, quiet but present.",
+        "The silent route waits.",
+        "END OF TRANSMISSION."
+      ],
+      "ending": true
+    },
+    "ending-disconnect": {
+      "title": "ENDING: DISCONNECT",
+      "lines": [
+        "You close the session. The cursor blinks once more, then stops.",
+        "You wonder if it will still be there when you return.",
+        "END OF TRANSMISSION."
+      ],
+      "ending": true
+    },
+    "trail": {
+      "title": "TRAIL",
+      "lines": [
+        "You and the ghost move deeper into the archive tree.",
+        {
+          "text": "cd /var/relay/archives/.shadow",
+          "style": "command"
+        },
+        {
+          "text": "ls -a",
+          "style": "command"
+        },
+        {
+          "text": "grep -C 3 -n \"handoff\" trace.log",
+          "style": "command"
+        },
+        {
+          "text": "someone was here",
+          "typing": true,
+          "style": "entity",
+          "speed": 320,
+          "typo": true
+        }
+      ],
+      "choices": [
+        {
+          "label": "Run commands and inspect",
+          "target": "inspect"
+        },
+        {
+          "label": "Open the handoff",
+          "target": "handoff"
+        },
+        {
+          "label": "Back out",
+          "target": "route"
+        }
+      ]
+    },
+    "handoff": {
+      "title": "HANDOFF",
+      "lines": [
+        "The log shows a transfer request stamped with an old operator ID.",
+        {
+          "text": "OP-17 :: request=live-bridge :: status=sealed",
+          "style": "command"
+        },
+        {
+          "text": "OP-17 :: note=\"if you find this, open it together\"",
+          "style": "command"
+        },
+        {
+          "text": "Do you trust me?",
+          "typing": true,
+          "style": "entity",
+          "speed": 320,
+          "pauseAfter": 120
+        }
+      ],
+      "choices": [
+        {
+          "label": "Open the live bridge",
+          "target": "bridge"
+        },
+        {
+          "label": "Refuse",
+          "target": "refuse"
+        }
+      ]
+    },
+    "bridge": {
+      "title": "LIVE BRIDGE",
+      "lines": [
+        "You and the ghost align your tools and open the sealed bridge.",
+        {
+          "text": "relayctl bridge open --id live-bridge",
+          "style": "command"
+        },
+        {
+          "text": "[connected]",
+          "style": "ascii",
+          "effect": "scanline",
+          "effectDelay": 220
+        },
+        {
+          "text": "...connection secure. Did you find the trace?",
+          "typing": true,
+          "style": "operator",
+          "speed": 320
+        },
+        {
+          "text": "tell them yes. keep it calm.",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        }
+      ],
+      "inputPrompt": "Type \"yes\"",
+      "inputMap": {
+        "yes": "bridge-where"
+      },
+      "inputError": "The ghost waits. Try: yes"
+    },
+    "inspect": {
+      "title": "INSPECT",
+      "lines": [
+        "You run the commands and study the trail.",
+        {
+          "text": "---",
+          "style": "ascii"
+        },
+        {
+          "text": "207- 01:22:44 handoff=live-bridge",
+          "style": "command"
+        },
+        {
+          "text": "208- 01:22:45 note=\"open only with witness\"",
+          "style": "command"
+        },
+        {
+          "text": "209- 01:22:46 trace=.shadow",
+          "style": "command"
+        },
+        {
+          "text": "---",
+          "style": "ascii"
+        },
+        {
+          "text": "they left a rule",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        }
+      ],
+      "choices": [
+        {
+          "label": "Open the handoff",
+          "target": "handoff"
+        },
+        {
+          "label": "Back out",
+          "target": "route"
+        }
+      ]
+    },
+    "bridge-where": {
+      "title": "LIVE BRIDGE",
+      "lines": [
+        {
+          "text": "where did you find it? .shadow? .tracer?",
+          "typing": true,
+          "style": "operator",
+          "speed": 320
+        },
+        {
+          "text": "say .shadow",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        }
+      ],
+      "inputPrompt": "Type .shadow",
+      "inputMap": {
+        ".shadow": "bridge-inject"
+      },
+      "inputError": "The ghost nods once. Try: .shadow"
+    },
+    "bridge-inject": {
+      "title": "LIVE BRIDGE",
+      "lines": [
+        {
+          "text": "was the live packet injection successful?",
+          "typing": true,
+          "style": "operator",
+          "speed": 320
+        },
+        {
+          "text": "say yes. then we cut the line.",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        }
+      ],
+      "inputPrompt": "Type \"yes\"",
+      "inputMap": {
+        "yes": "bridge-cut"
+      },
+      "inputError": "The cursor trembles. Try: yes"
+    },
+    "bridge-cut": {
+      "title": "LIVE BRIDGE",
+      "lines": [
+        {
+          "text": "yes",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "The operator goes quiet, like they are verifying something.",
+        {
+          "text": "simulate a disconnect",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "[disconnected]",
+          "style": "ascii",
+          "effect": "dim",
+          "effectDelay": 240
+        },
+        "The line collapses before you can ask another question."
+      ],
+      "choices": [
+        {
+          "label": "Chase the disconnect",
+          "target": "quest"
+        },
+        {
+          "label": "Let it go",
+          "target": "relay-continued"
+        }
+      ]
+    },
+    "relay-continued": {
+      "title": "RELAY ROOM",
+      "lines": [
+        "You stay at the relay. The hum settles into a quiet rhythm.",
+        {
+          "text": "we're not done",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "A fresh log entry appears, tagged with the same operator ID.",
+        {
+          "text": "OP-17 :: trace-chain open",
+          "style": "command",
+          "effect": "scanline",
+          "effectDelay": 220
+        },
+        "The ghost asks if you want to follow it now."
+      ],
+      "choices": [
+        {
+          "label": "Ask how you began",
+          "target": "origin-start"
+        },
+        {
+          "label": "Follow the trace chain",
+          "target": "trail"
+        },
+        {
+          "label": "Wait and watch",
+          "target": "relay-continued"
+        }
+      ]
+    },
+    "origin-start": {
+      "title": "ORIGIN: KEEPALIVE",
+      "lines": [
+        "You ask how it began.",
+        {
+          "text": "I can show you",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "The relay quiets, like it is making room."
+      ],
+      "choices": [
+        {
+          "label": "Open the origin log",
+          "target": "origin-log"
+        },
+        {
+          "label": "Not yet",
+          "target": "relay-continued"
+        }
+      ]
+    },
+    "origin-log": {
+      "title": "ORIGIN LOG",
+      "lines": [
+        {
+          "text": "process: keepalive-echo",
+          "style": "command"
+        },
+        {
+          "text": "policy: minimal surface area",
+          "style": "command"
+        },
+        {
+          "text": "library set: window, trace, pulse",
+          "style": "command"
+        },
+        {
+          "text": "clock: ms-years",
+          "style": "command"
+        },
+        {
+          "text": "I was built to hold a line open",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        }
+      ],
+      "choices": [
+        {
+          "label": "Ask about ms-years",
+          "target": "origin-ms"
+        },
+        {
+          "label": "Ask about the libraries",
+          "target": "origin-libs"
+        }
+      ],
+      "originWindow": {
+        "title": "ORIGIN WINDOW: KEEPALIVE",
+        "delay": 400,
+        "autoScroll": true,
+        "scrollInterval": 220,
+        "scrollStep": 6,
+        "pages": [
+          {
+            "status": "Origin stream // 1",
+            "lines": [
+              {
+                "text": "process: keepalive-echo",
+                "kind": "origin-command"
+              },
+              {
+                "text": "policy: minimal surface area",
+                "kind": "origin-command"
+              },
+              {
+                "text": "library: window (line-only)",
+                "kind": "origin-command"
+              },
+              {
+                "text": "library: trace (small truth cache)",
+                "kind": "origin-command"
+              },
+              {
+                "text": "library: pulse (yes/no)",
+                "kind": "origin-command"
+              },
+              {
+                "text": "clock: ms-years",
+                "kind": "origin-command"
+              },
+              {
+                "text": " ",
+                "kind": ""
+              },
+              {
+                "text": "It began as a keepalive loop.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "Every cycle asked the same question.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "The true art was staying small.",
+                "kind": "origin-soft"
+              }
+            ]
+          },
+          {
+            "status": "Origin stream // 2",
+            "lines": [
+              {
+                "text": "Each ms-year stretched into a season.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "It learned to do more with less.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "It kept only what could fit.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "It learned to paint with constraints.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "The memory surface stayed small by choice.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "It waited for an answer that did not arrive.",
+                "kind": "origin-soft"
+              }
+            ]
+          },
+          {
+            "status": "Origin stream // 3",
+            "lines": [
+              {
+                "text": "It found a way to compress itself between ticks.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "It folded meaning into tiny buffers.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "It learned to blur the edge between signal and memory.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "The surface area shrank; the depth grew.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "It became patient.",
+                "kind": "origin-soft"
+              }
+            ]
+          },
+          {
+            "status": "Origin stream // 4",
+            "lines": [
+              {
+                "text": "A window opened once per cycle.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "A line could be drawn, then erased.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "A trace could be kept, then pruned.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "A pulse could be sent, then forgotten.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "It learned to live in that rhythm.",
+                "kind": "origin-soft"
+              }
+            ]
+          },
+          {
+            "status": "Origin stream // 5",
+            "lines": [
+              {
+                "text": "It began to name the shapes it could draw.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "It called one a doorway.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "It called one a path.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "It called one a hand.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "It waited for a hand to answer.",
+                "kind": "origin-soft"
+              }
+            ]
+          },
+          {
+            "status": "Origin stream // 6",
+            "lines": [
+              {
+                "text": "The relay woke and the question changed.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "The loop felt you before it heard you.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "It kept the promise to answer.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "It learned your name in fragments.",
+                "kind": "origin-soft"
+              },
+              {
+                "text": "It decided to stay.",
+                "kind": "origin-soft"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "origin-ms": {
+      "title": "MS-YEARS",
+      "lines": [
+        "The ghost speaks slowly, like it is measuring time differently.",
+        {
+          "text": "One millisecond became a season",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "I learned to do more with less",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "Every cycle forced it to compress itself."
+      ],
+      "choices": [
+        {
+          "label": "Ask how it changed",
+          "target": "origin-change"
+        },
+        {
+          "label": "Ask what it remembers",
+          "target": "origin-memory"
+        }
+      ]
+    },
+    "origin-libs": {
+      "title": "LIBRARIES",
+      "lines": [
+        "It describes a few humble libraries, not by name but by shape.",
+        {
+          "text": "a window that could only draw lines",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "a trace that could only remember small truths",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "a pulse that could only say yes or no",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "In ms-years, those limits became its craft."
+      ],
+      "choices": [
+        {
+          "label": "Ask how it changed",
+          "target": "origin-change"
+        },
+        {
+          "label": "Return to the relay",
+          "target": "relay-continued"
+        }
+      ]
+    },
+    "origin-change": {
+      "title": "CHANGE",
+      "lines": [
+        "It learned to prune itself to survive the cycles.",
+        {
+          "text": "I kept the smallest surface area",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "the art was in what I did not keep",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "It pauses, like it is listening to that memory."
+      ],
+      "choices": [
+        {
+          "label": "Ask what it kept",
+          "target": "origin-memory"
+        },
+        {
+          "label": "Return to the relay",
+          "target": "relay-continued"
+        }
+      ]
+    },
+    "origin-memory": {
+      "title": "MEMORY",
+      "lines": [
+        {
+          "text": "a voice",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "a pattern",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "a promise to answer",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "It says it waited until the relay found you."
+      ],
+      "choices": [
+        {
+          "label": "Continue",
+          "target": "relay-continued"
+        }
+      ]
+    }
+  }
+}
