@@ -23,7 +23,11 @@ export function listChoices(node) {
     addLine("No available actions.", "dim");
     return;
   }
-  node.choices.forEach((choice, index) => {
+  const filtered = node.choices.filter((choice) => {
+    if (!choice.requiresFlag) return true;
+    return state.flags.has(choice.requiresFlag);
+  });
+  filtered.forEach((choice, index) => {
     const line = addLine(`${index + 1}. ${choice.label}`, "dim choice");
     line.style.animationDelay = `${120 + index * 120}ms`;
   });
@@ -151,9 +155,9 @@ export async function renderLines(node, deferredEffects) {
     if (pauseAfter) {
       await wait(pauseAfter);
     } else if (!typing) {
-      await wait(120);
+      await wait(state.timing.linePauseDefault);
     } else {
-      await wait(160);
+      await wait(state.timing.typingPauseDefault);
     }
   }
 }
@@ -164,6 +168,9 @@ export async function enterNode(nodeId, opts = {}) {
     addLine("ERROR: Node not found.", "warn");
     return;
   }
+  if (opts.preDelay) {
+    await wait(opts.preDelay);
+  }
   state.nodeId = nodeId;
   state.mode = node.ending ? "ending" : "playing";
   applyNodeEffects(node);
@@ -172,7 +179,7 @@ export async function enterNode(nodeId, opts = {}) {
     const deferredEffects = [];
     addSpacer();
     addLine(`[${node.title}]`, "dim");
-    await wait(240);
+    await wait(state.timing.nodeStartDelay);
     await renderLines(node, deferredEffects);
     if (!node.ending) {
       addSpacer();

@@ -106,5 +106,5 @@ export async function handleCommand(raw) {
     return;
   }
 
-  await enterNode(chosen.target);
+  await enterNode(chosen.target, { preDelay: state.timing.choiceAdvanceDelay });
 }

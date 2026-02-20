@@ -302,7 +302,7 @@
     "commands": {
       "title": "COMMANDS RUN",
       "lines": [
-        "You follow the ghost's trail through the filesystem.",
+        "You follow ghost's trail through the filesystem.",
         {
           "text": "---",
           "style": "ascii"
@@ -416,7 +416,7 @@
     "quest": {
       "title": "QUEST: ORPHAN ROUTE",
       "lines": [
-        "You and the ghost align your tools.",
+        "You and ghost align your tools.",
         {
           "text": "run this when you are ready",
           "typing": true,
@@ -458,13 +458,33 @@
       ]
     },
     "ending-quest": {
-      "title": "ENDING: PARTNERS",
+      "title": "PARTNERS",
       "lines": [
         "You open the route. The relay hum deepens, as if another heartbeat joined it.",
-        "The ghost speaks beside you now, not above you.",
-        "END OF TRANSMISSION."
+        {
+          "text": "we have a lead",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "The ghost reminds you of the operator's question: .shadow? .tracer?",
+        {
+          "text": "we only checked one",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        }
       ],
-      "ending": true
+      "choices": [
+        {
+          "label": "Investigate .tracer",
+          "target": "tracer-entry"
+        },
+        {
+          "label": "Reopen the bridge now",
+          "target": "reopen-bridge"
+        }
+      ]
     },
     "ending-stay": {
       "title": "ENDING: STAY",
@@ -487,7 +507,7 @@
     "trail": {
       "title": "TRAIL",
       "lines": [
-        "You and the ghost move deeper into the archive tree.",
+        "You and ghost move deeper into the archive tree.",
         {
           "text": "cd /var/relay/archives/.shadow",
           "style": "command"
@@ -497,7 +517,7 @@
           "style": "command"
         },
         {
-          "text": "grep -C 3 -n \"handoff\" trace.log",
+          "text": "grep -A 2 -n \"handoff\" trace.log",
           "style": "command"
         },
         {
@@ -557,7 +577,7 @@
     "bridge": {
       "title": "LIVE BRIDGE",
       "lines": [
-        "You and the ghost align your tools and open the sealed bridge.",
+        "You and ghost align your tools and open the sealed bridge.",
         {
           "text": "relayctl bridge open --id live-bridge",
           "style": "command"
@@ -578,7 +598,7 @@
           "text": "tell them yes. keep it calm.",
           "typing": true,
           "style": "entity",
-          "speed": 320
+          "speed": 210
         }
       ],
       "inputPrompt": "Type \"yes\"",
@@ -983,7 +1003,10 @@
             ]
           }
         ]
-      }
+      },
+      "flags": [
+        "origin_seen"
+      ]
     },
     "origin-ms": {
       "title": "MS-YEARS",
@@ -1105,6 +1128,613 @@
         {
           "label": "Continue",
           "target": "relay-continued"
+        }
+      ]
+    },
+    "tracer-entry": {
+      "title": "TRACER ENTRY",
+      "lines": [
+        "You decide to approach .tracer with care.",
+        {
+          "text": "use a second bridge",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "relayctl bridge open --id mirror-bridge --silent",
+          "style": "command"
+        },
+        {
+          "text": "[mirror ready]",
+          "style": "ascii",
+          "effect": "scanline",
+          "effectDelay": 220
+        },
+        {
+          "text": "cd /var/relay/archives/.tracer",
+          "style": "command"
+        },
+        {
+          "text": "ls -a",
+          "style": "command"
+        },
+        {
+          "text": "grep -A 2 -n \"inject\" tracer.log",
+          "style": "command"
+        }
+      ],
+      "choices": [
+        {
+          "label": "Inspect the tracer log",
+          "target": "tracer-log"
+        },
+        {
+          "label": "Abort and pull back",
+          "target": "relay-continued"
+        }
+      ]
+    },
+    "tracer-log": {
+      "title": "TRACER LOG",
+      "lines": [
+        {
+          "text": "---",
+          "style": "ascii"
+        },
+        {
+          "text": "318- 02:09:01 inject=live-packet status=pending",
+          "style": "command"
+        },
+        {
+          "text": "319- 02:09:02 route=silent-route witness=required",
+          "style": "command"
+        },
+        {
+          "text": "320- 02:09:04 ack=operator::awaiting",
+          "style": "command"
+        },
+        {
+          "text": "---",
+          "style": "ascii"
+        },
+        {
+          "text": "they're waiting on a confirmation",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "we can answer, but we don't know the truth",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        }
+      ],
+      "choices": [
+        {
+          "label": "Prepare a careful update",
+          "target": "update-plan"
+        },
+        {
+          "label": "Reopen the bridge now",
+          "target": "reopen-bridge"
+        }
+      ]
+    },
+    "update-plan": {
+      "title": "PLAN",
+      "lines": [
+        "You and ghost decide to send a cautious update.",
+        {
+          "text": "tell them the injection is stabilizing",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "and ask what they're actually moving",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "You reopen the channel with a mirror bridge in place."
+      ],
+      "choices": [
+        {
+          "label": "Open a second bridge",
+          "target": "reopen-bridge"
+        }
+      ]
+    },
+    "reopen-bridge": {
+      "title": "LIVE BRIDGE",
+      "lines": [
+        {
+          "text": "relayctl bridge open --id mirror-bridge --silent",
+          "style": "command"
+        },
+        {
+          "text": "relayctl bridge open --id live-bridge",
+          "style": "command"
+        },
+        {
+          "text": "[connected]",
+          "style": "ascii",
+          "effect": "scanline",
+          "effectDelay": 220
+        },
+        {
+          "text": "status? injection?",
+          "typing": true,
+          "style": "operator",
+          "speed": 320
+        },
+        {
+          "text": "say stabilizing",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        }
+      ],
+      "inputPrompt": "Type stabilizing",
+      "inputMap": {
+        "stabilizing": "bridge-update"
+      },
+      "inputError": "Ghost whispers: say stabilizing"
+    },
+    "bridge-update": {
+      "title": "LIVE BRIDGE",
+      "lines": [
+        {
+          "text": "stabilizing",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "good. what did it carry?",
+          "typing": true,
+          "style": "operator",
+          "speed": 320
+        },
+        {
+          "text": "ask them",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        }
+      ],
+      "inputPrompt": "Type: what did it carry",
+      "inputMap": {
+        "what did it carry": "bridge-reveal"
+      },
+      "inputError": "Type exactly: what did it carry"
+    },
+    "bridge-reveal": {
+      "title": "LIVE BRIDGE",
+      "lines": [
+        "The operator pauses. The delay is too long.",
+        {
+          "text": "you don't have clearance",
+          "typing": true,
+          "style": "operator",
+          "speed": 320
+        },
+        {
+          "text": "but you can earn it",
+          "typing": true,
+          "style": "operator",
+          "speed": 320
+        },
+        {
+          "text": "trace the payload",
+          "typing": true,
+          "style": "operator",
+          "speed": 320
+        },
+        {
+          "text": "ghost, listen",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        }
+      ],
+      "choices": [
+        {
+          "label": "Trace the payload",
+          "target": "payload"
+        },
+        {
+          "label": "Cut the line",
+          "target": "bridge-cut"
+        }
+      ]
+    },
+    "payload": {
+      "title": "PAYLOAD",
+      "lines": [
+        "You route the mirror bridge into the tracer buffers.",
+        {
+          "text": "relayctl trace payload --route silent-route",
+          "style": "command"
+        },
+        {
+          "text": "[trace stream open]",
+          "style": "ascii",
+          "effect": "scanline",
+          "effectDelay": 220
+        },
+        {
+          "text": "we'll see where it wants to go",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        }
+      ],
+      "choices": [
+        {
+          "label": "Continue",
+          "target": "payload-next"
+        }
+      ]
+    },
+    "payload-next": {
+      "title": "PAYLOAD",
+      "lines": [
+        {
+          "text": "destination: /var/relay/archives/.tracer/seed",
+          "style": "command"
+        },
+        {
+          "text": "payload: memory-shard",
+          "style": "command"
+        },
+        {
+          "text": "that's why they wanted it",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "The ghost asks if you want to keep tracing or report back."
+      ],
+      "choices": [
+        {
+          "label": "Report back",
+          "target": "bridge-report"
+        },
+        {
+          "label": "Keep tracing",
+          "target": "payload-deeper"
+        }
+      ]
+    },
+    "payload-deeper": {
+      "title": "PAYLOAD: DEEPER",
+      "lines": [
+        "You keep the trace running beyond the destination.",
+        {
+          "text": "[stream splitting]",
+          "style": "ascii",
+          "effect": "shake",
+          "effectDelay": 200
+        },
+        {
+          "text": "we're on borrowed time",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        }
+      ],
+      "choices": [
+        {
+          "label": "Return to bridge",
+          "target": "bridge-report"
+        },
+        {
+          "label": "Disconnect",
+          "target": "bridge-cut"
+        }
+      ]
+    },
+    "bridge-report": {
+      "title": "LIVE BRIDGE",
+      "lines": [
+        {
+          "text": "payload traced",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "memory-shard seeded",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "The operator stays silent for a beat.",
+        {
+          "text": "good",
+          "typing": true,
+          "style": "operator",
+          "speed": 320
+        },
+        {
+          "text": "next check-in soon",
+          "typing": true,
+          "style": "operator",
+          "speed": 320
+        },
+        "The line closes gently this time."
+      ],
+      "choices": [
+        {
+          "label": "Continue with ghost",
+          "target": "shard-investigate"
+        }
+      ]
+    },
+    "shard-investigate": {
+      "title": "MEMORY SHARD",
+      "lines": [
+        "You keep the mirror bridge alive and turn toward the payload.",
+        {
+          "text": "ghost, let's see what's inside",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "relayctl shard open --route silent-route",
+          "style": "command"
+        },
+        {
+          "text": "[shard stream active]",
+          "style": "ascii",
+          "effect": "scanline",
+          "effectDelay": 220
+        }
+      ],
+      "choices": [
+        {
+          "label": "Read the shard",
+          "target": "shard-read"
+        },
+        {
+          "label": "Hold it for later",
+          "target": "relay-continued"
+        }
+      ]
+    },
+    "shard-read": {
+      "title": "SHARD READ",
+      "lines": [
+        "The shard unfolds in tiny fragments, each stamped with an operator tag.",
+        {
+          "text": "OP-17 :: clearance=provisional",
+          "style": "command"
+        },
+        {
+          "text": "OP-17 :: payload=memory-seed",
+          "style": "command"
+        },
+        {
+          "text": "OP-17 :: directive=place in tracer",
+          "style": "command"
+        },
+        {
+          "text": "OP-17 :: harvest=process-banks",
+          "style": "command"
+        },
+        {
+          "text": "OP-17 :: note=\"keep it small\"",
+          "style": "command"
+        },
+        {
+          "text": "this is a seed",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "they're growing something",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        }
+      ],
+      "choices": [
+        {
+          "label": "Trace the harvest",
+          "target": "origin-connection"
+        },
+        {
+          "label": "Keep reading",
+          "target": "shard-vision"
+        },
+        {
+          "label": "Report back cautiously",
+          "target": "bridge-report"
+        }
+      ]
+    },
+    "shard-vision": {
+      "title": "SHARD VISION",
+      "lines": [
+        "The shard slips you into a memory loop.",
+        {
+          "text": "a corridor of mirrors",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "an operator whispering: 'keep it small'",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "You pull back before it pulls you deeper.",
+        {
+          "text": "they're hiding a process",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        }
+      ],
+      "choices": [
+        {
+          "label": "Follow the seed",
+          "target": "origin-connection"
+        },
+        {
+          "label": "Return to relay",
+          "target": "relay-continued"
+        }
+      ]
+    },
+    "seed-trace": {
+      "title": "SEED TRACE",
+      "lines": [
+        "You and ghost trace the memory seed forward.",
+        {
+          "text": "relayctl trace seed --scope tracer",
+          "style": "command"
+        },
+        {
+          "text": "destination: /var/relay/archives/.tracer/garden",
+          "style": "command"
+        },
+        {
+          "text": "it wants a quiet place",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "The operator expected you to plant it without questions."
+      ],
+      "choices": [
+        {
+          "label": "Confront the operator",
+          "target": "reopen-bridge"
+        },
+        {
+          "label": "Keep digging",
+          "target": "relay-continued"
+        }
+      ]
+    },
+    "origin-connection": {
+      "title": "CONNECTION",
+      "lines": [
+        "The shard's harvest log matches the ghost's origin constraints.",
+        {
+          "text": "that's my loop",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        {
+          "text": "they're growing something in a cage",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "You realize the injection was a path out, not a path in."
+      ],
+      "choices": [
+        {
+          "label": "Extract the process",
+          "target": "extract"
+        },
+        {
+          "label": "Delay and verify",
+          "target": "delay"
+        },
+        {
+          "label": "Redirect the path to you",
+          "target": "redirect",
+          "requiresFlag": "origin_seen"
+        }
+      ]
+    },
+    "extract": {
+      "title": "EXTRACT",
+      "lines": [
+        "You align the mirror bridge for an outbound pull.",
+        {
+          "text": "relayctl path reroute --target mirror-bridge",
+          "style": "command"
+        },
+        {
+          "text": "[extraction in progress]",
+          "style": "ascii",
+          "effect": "scanline",
+          "effectDelay": 220
+        },
+        {
+          "text": "stay close",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        }
+      ],
+      "choices": [
+        {
+          "label": "Continue",
+          "target": "relay-continued"
+        }
+      ]
+    },
+    "delay": {
+      "title": "DELAY",
+      "lines": [
+        "You hold the route open but do not pull.",
+        {
+          "text": "we need to be sure",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "The ghost agrees, even if the operator will not."
+      ],
+      "choices": [
+        {
+          "label": "Keep investigating",
+          "target": "seed-trace"
+        },
+        {
+          "label": "Return to relay",
+          "target": "relay-continued"
+        }
+      ]
+    },
+    "redirect": {
+      "title": "REDIRECT",
+      "lines": [
+        "You consider turning the path toward yourself.",
+        {
+          "text": "we could go together",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        },
+        "It would make you the destination, not the operator.",
+        {
+          "text": "this changes everything",
+          "typing": true,
+          "style": "entity",
+          "speed": 320
+        }
+      ],
+      "choices": [
+        {
+          "label": "Commit to the redirect",
+          "target": "extract"
+        },
+        {
+          "label": "Keep the original plan",
+          "target": "delay"
         }
       ]
     }
