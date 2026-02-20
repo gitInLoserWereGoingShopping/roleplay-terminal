@@ -11,5 +11,11 @@ export const state = {
   ghostEl: null,
   originTimer: null,
   originPages: null,
-  originPageIndex: 0
+  originPageIndex: 0,
+  timing: {
+    nodeStartDelay: 440,
+    linePauseDefault: 340,
+    typingPauseDefault: 200,
+    choiceAdvanceDelay: 540,
+  },
 };
