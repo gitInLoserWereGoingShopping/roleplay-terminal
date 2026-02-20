@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- CRT Monitor Frame/Bezel -->
+  <rect x="0" y="0" width="64" height="64" rx="8" fill="#1a1a1a" />
+  
+  <!-- Screen Background -->
+  <rect x="4" y="4" width="56" height="56" rx="4" fill="#000000" />
+  
+  <!-- Binary Glitch Content -->
+  <text x="6" y="16" fill="#33ff33" font-family="monospace" font-size="10" font-weight="bold" letter-spacing="1">01010</text>
+  <text x="6" y="26" fill="#33ff00" font-family="monospace" font-size="10" font-weight="bold" letter-spacing="1" opacity="0.8">10111</text>
+  <text x="6" y="36" fill="#33ff33" font-family="monospace" font-size="10" font-weight="bold" letter-spacing="1" opacity="0.9">00101</text>
+  <text x="6" y="46" fill="#33ff00" font-family="monospace" font-size="10" font-weight="bold" letter-spacing="1" opacity="0.7">11010</text>
+  <text x="6" y="56" fill="#33ff33" font-family="monospace" font-size="10" font-weight="bold" letter-spacing="1" opacity="0.6">01100</text>
+
+  <!-- Scanline/Glare Effect Overlay -->
+  <rect x="4" y="4" width="56" height="56" rx="4" fill="url(#scanlines)" opacity="0.3" pointer-events="none" />
+  <defs>
+    <pattern id="scanlines" patternUnits="userSpaceOnUse" width="1" height="2">
+      <line x1="0" y1="0" x2="1" y2="0" stroke="#000" stroke-width="1" opacity="0.5"/>
+    </pattern>
+  </defs>
+</svg>

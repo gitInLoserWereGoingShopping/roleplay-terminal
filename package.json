@@ -1,0 +1,15 @@
+{
+  "name": "roleplay-terminal",
+  "version": "1.0.0",
+  "description": "A web-based roleplay game that presents as a vintage relay terminal. On first launch, the story begins immediately.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "playwright": "^1.58.2"
+  }
+}

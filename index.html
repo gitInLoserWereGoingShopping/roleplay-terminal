@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ROLEPLAY-TERMINAL</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="frame">
+      <section class="crt" aria-label="Roleplay terminal">
+        <header class="bar">
+          <div class="brand">ROUTER/INTAKE v2.6</div>
+          <div class="status">
+            <span class="dot"></span>
+            <span>LINK: STABLE</span>
+            <span>SECTOR: AURORA</span>
+            <span id="clock">00:00:00</span>
+          </div>
+        </header>
+        <div id="screen" class="screen" role="log" aria-live="polite"></div>
+        <div class="input-row">
+          <span id="prompt" class="prompt">&gt;</span>
+          <input id="command" type="text" autocomplete="off" spellcheck="false" />
+        </div>
+        <footer class="footer">
+          <span>F1 HELP</span>
+          <span>F TOGGLE FULLSCREEN</span>
+          <span>ESC EXIT FULLSCREEN</span>
+        </footer>
+      </section>
+    </main>
+    <div id="origin-window" class="origin-window" aria-hidden="true">
+      <div class="origin-window__panel" role="dialog" aria-modal="true">
+        <header class="origin-window__header">
+          <span id="origin-title">ORIGIN LOG</span>
+        </header>
+        <div id="origin-body" class="origin-window__body"></div>
+        <footer class="origin-window__footer">
+          <span id="origin-status">Origin stream</span>
+          <div class="origin-window__actions">
+            <button id="origin-next" type="button">More</button>
+            <button id="origin-close" type="button">Close</button>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
