@@ -1,0 +1,11 @@
+export const screen = document.getElementById("screen");
+export const crt = document.querySelector(".crt");
+export const commandInput = document.getElementById("command");
+export const clockEl = document.getElementById("clock");
+export const promptEl = document.getElementById("prompt");
+export const originWindow = document.getElementById("origin-window");
+export const originTitle = document.getElementById("origin-title");
+export const originBody = document.getElementById("origin-body");
+export const originStatus = document.getElementById("origin-status");
+export const originNext = document.getElementById("origin-next");
+export const originClose = document.getElementById("origin-close");

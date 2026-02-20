@@ -1,0 +1,15 @@
+export const state = {
+  story: null,
+  nodeId: null,
+  inventory: new Set(),
+  flags: new Set(),
+  log: [],
+  mode: "boot",
+  typing: false,
+  effectsEnabled: true,
+  ghostRunning: false,
+  ghostEl: null,
+  originTimer: null,
+  originPages: null,
+  originPageIndex: 0
+};
